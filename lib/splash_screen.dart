@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:ai_talk_test/features/auth/screens/login_screen.dart';
+import 'package:ai_talk_test/core/navigation/app_router.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -17,12 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(const Duration(seconds: 3), () {
       if (!mounted) return;
 
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => LoginScreen(),
-        ),
-      );
+      Navigator.pushReplacementNamed(context, AppRoutes.login);
     });
   }
 

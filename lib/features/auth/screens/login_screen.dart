@@ -1,4 +1,4 @@
-import 'package:ai_talk_test/features/home/screens/home_screen.dart';
+import 'package:ai_talk_test/core/navigation/app_router.dart';
 import 'package:ai_talk_test/widgets/custom_button.dart';
 import 'package:ai_talk_test/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
@@ -44,11 +44,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
     setState(() => _isSubmitting = true);
 
-    Navigator.pushReplacement(
+    Navigator.pushReplacementNamed(
       context,
-      MaterialPageRoute(
-        builder: (context) => HomeScreen(accountId: loginId),
-      ),
+      AppRoutes.home,
+      arguments: loginId,
     );
   }
 

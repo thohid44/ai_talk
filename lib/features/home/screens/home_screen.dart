@@ -1,4 +1,4 @@
-import 'package:ai_talk_test/features/auth/screens/login_screen.dart';
+import 'package:ai_talk_test/core/navigation/app_router.dart';
 import 'package:ai_talk_test/features/profile/screens/profile_screen.dart';
 import 'package:ai_talk_test/features/promo/screens/promo_materials_screen.dart';
 import 'package:ai_talk_test/features/signals/screens/signals_archive_screen.dart';
@@ -40,9 +40,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
     if (shouldLogout != true || !mounted) return;
 
-    Navigator.pushAndRemoveUntil(
+    Navigator.pushNamedAndRemoveUntil(
       context,
-      MaterialPageRoute(builder: (context) => const LoginScreen()),
+      AppRoutes.login,
       (route) => false,
     );
   }

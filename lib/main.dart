@@ -1,4 +1,4 @@
-import 'package:ai_talk_test/splash_screen.dart';
+import 'package:ai_talk_test/core/navigation/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 void main() {
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       // Use builder only if you need to use library outside ScreenUtilInit context
-      builder: (_ , child) {
+      builder: (_, _) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'AI Talk',
@@ -43,10 +43,10 @@ class MyApp extends StatelessWidget {
             ),
             textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
           ),
-          home: child,
+          initialRoute: AppRoutes.splash,
+          onGenerateRoute: AppRouter.onGenerateRoute,
         );
       },
-      child: SplashScreen(),
     );
   }
 }

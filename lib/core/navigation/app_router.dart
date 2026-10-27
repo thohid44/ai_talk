@@ -1,9 +1,9 @@
-import 'package:ai_talk_test/features/auth/screens/login_screen.dart';
-import 'package:ai_talk_test/features/home/screens/home_screen.dart';
-import 'package:ai_talk_test/features/profile/screens/profile_screen.dart';
-import 'package:ai_talk_test/features/promo/screens/promo_materials_screen.dart';
-import 'package:ai_talk_test/features/signals/screens/signals_archive_screen.dart';
-import 'package:ai_talk_test/splash_screen.dart';
+import 'package:ai_talk_test/features/auth/presentation/screens/login_screen.dart';
+import 'package:ai_talk_test/features/home/presentation/screens/home_screen.dart';
+import 'package:ai_talk_test/features/profile/presentation/screens/profile_screen.dart';
+import 'package:ai_talk_test/features/promo/presentation/screens/promo_materials_screen.dart';
+import 'package:ai_talk_test/features/signals/presentation/screens/signals_archive_screen.dart';
+import 'package:ai_talk_test/features/splash/presentation/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppRoutes {
@@ -23,9 +23,9 @@ class AppRouter {
       case AppRoutes.login:
         return _page(settings, const LoginScreen());
       case AppRoutes.home:
-        return _page(settings, HomeScreen(accountId: _accountId(settings.arguments)));
+        return _page(settings, const HomeScreen());
       case AppRoutes.profile:
-        return _page(settings, ProfileScreen(accountId: _accountId(settings.arguments)));
+        return _page(settings, const ProfileScreen());
       case AppRoutes.signals:
         return _page(settings, const SignalsArchiveScreen());
       case AppRoutes.promo:
@@ -33,21 +33,15 @@ class AppRouter {
       default:
         return _page(
           settings,
-          const Scaffold(
-            body: Center(child: Text('Page not found')),
-          ),
+          const Scaffold(body: Center(child: Text('Page not found'))),
         );
     }
   }
 
-  static String? _accountId(Object? arguments) {
-    if (arguments is String && arguments.trim().isNotEmpty) {
-      return arguments.trim();
-    }
-    return null;
-  }
-
-  static MaterialPageRoute<dynamic> _page(RouteSettings settings, Widget child) {
+  static MaterialPageRoute<dynamic> _page(
+    RouteSettings settings,
+    Widget child,
+  ) {
     return MaterialPageRoute<dynamic>(
       settings: settings,
       builder: (context) => child,
